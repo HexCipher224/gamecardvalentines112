@@ -3,9 +3,9 @@ import "./globals.css";
 import MusicPlayer from "../components/MusicPlayer";
 
 export const metadata: Metadata = {
-  title: "Valentines for Princess Neema — A Romantic Card Game",
+  title: "Valentines for Triza — A Romantic Card Game",
   description:
-    "Play a unique Valentine's card game for Princess Neema. Complete the collection to reveal a romantic proposal!",
+    "Play a unique Valentine's card game for Triza. Complete the collection to reveal a romantic proposal!",
   keywords: [
     "Valentine's card game",
     "romantic proposal game",

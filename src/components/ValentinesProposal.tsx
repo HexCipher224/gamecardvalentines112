@@ -49,7 +49,7 @@ const images = [
   "/game-photos/36.avif",
 ];
 
-export default function ValentinesProposal({ name = "Princess Neema", onNext }: { name?: string; onNext?: () => void }) {
+export default function ValentinesProposal({ name = "Triza", onNext }: { name?: string; onNext?: () => void }) {
   const [position, setPosition] = useState<{
     top: string;
     left: string;
