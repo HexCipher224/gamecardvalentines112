@@ -26,7 +26,7 @@ export default function ForeverTogetherPage({ onNext }: { onNext: () => void }) 
             transition={{ delay: 0.3, duration: 1 }}
           >
             <Image
-              src="/downloads/20260211"
+              src="/downloads/20260211.jpg"
               alt="Us Forever"
               width={400}
               height={500}

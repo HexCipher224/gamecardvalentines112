@@ -104,7 +104,7 @@ export default function ValentinesProposal({ name = "Triza", onNext }: { name?: 
           transition={{ delay: 0.3 }}
         >
           <Image
-            src="/downloads/2be372228f"
+            src="/downloads/2be372228f.jpg"
             alt="Valentine Photo"
             width={250}
             height={250}
