@@ -41,7 +41,7 @@ I love you so much`;
         {/* Couple Photo */}
         <div className="flex-1 flex justify-center">
           <Image
-            src="/couple-photo.jpg"
+            src="/downloads/letter-photo.jpg"
             alt="Us"
             width={300}
             height={400}
