@@ -70,7 +70,7 @@ export default function ValentinesProposal({ name = "Triza", onNext }: { name?: 
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-br from-pink-200 via-rose-200 to-red-200 z-0 p-4">
+    <div className="relative flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-br from-pink-200 via-rose-200 to-red-200 z-0 p-4 overflow-hidden">
       {/* Image Grid Background */}
       <div className="absolute inset-0 grid grid-cols-6 opacity-10 pointer-events-none">
         {images.slice(0, 36).map((src, index) => (
@@ -85,14 +85,53 @@ export default function ValentinesProposal({ name = "Triza", onNext }: { name?: 
         ))}
       </div>
 
+      {/* Floating decorative hearts */}
+      <motion.div 
+        animate={{ y: [0, -30, 0] }}
+        transition={{ duration: 4, repeat: Infinity }}
+        className="absolute top-20 left-8 text-5xl z-0"
+      >
+        💕
+      </motion.div>
+      
+      <motion.div 
+        animate={{ y: [0, 30, 0] }}
+        transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+        className="absolute top-32 right-10 text-5xl z-0"
+      >
+        💖
+      </motion.div>
+
+      <motion.div 
+        animate={{ y: [0, -25, 0] }}
+        transition={{ duration: 4.5, repeat: Infinity, delay: 1 }}
+        className="absolute bottom-40 left-10 text-5xl z-0"
+      >
+        💕
+      </motion.div>
+
+      {/* Top decoration */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        className="relative z-10 flex justify-center gap-3 mb-6 text-3xl"
+      >
+        <span>💕</span>
+        <span>💖</span>
+        <span>💕</span>
+        <span>💖</span>
+        <span>💕</span>
+      </motion.div>
+
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
-        className="flex flex-col items-center justify-center w-full max-w-2xl relative z-10"
+        className="flex flex-col items-center justify-center w-full max-w-3xl relative z-10"
       >
         <h2
-          className={`text-4xl lg:text-5xl font-semibold mb-12 text-red-600 drop-shadow-lg text-center ${playfairDisplay.className}`}
+          className={`text-4xl lg:text-6xl font-bold mb-8 text-red-600 drop-shadow-lg text-center ${playfairDisplay.className}`}
         >
           {name}, will you be my Valentine? 💕
         </h2>
@@ -102,13 +141,20 @@ export default function ValentinesProposal({ name = "Triza", onNext }: { name?: 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
+          className="relative"
         >
+          {/* Decorative elements */}
+          <div className="absolute -top-8 -left-8 text-4xl animate-bounce">💕</div>
+          <div className="absolute -top-6 -right-6 text-4xl animate-bounce" style={{ animationDelay: "0.2s" }}>💖</div>
+          <div className="absolute -bottom-6 -left-6 text-4xl animate-bounce" style={{ animationDelay: "0.4s" }}>💕</div>
+          <div className="absolute -bottom-8 -right-8 text-4xl animate-bounce" style={{ animationDelay: "0.6s" }}>💖</div>
+          
           <Image
             src="/downloads/2be372228f.jpg"
             alt="Valentine Photo"
-            width={250}
-            height={250}
-            className="rounded-xl shadow-2xl object-cover"
+            width={280}
+            height={280}
+            className="rounded-2xl shadow-2xl object-cover border-4 border-pink-200"
           />
         </motion.div>
 
@@ -117,16 +163,16 @@ export default function ValentinesProposal({ name = "Triza", onNext }: { name?: 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-12 relative z-50"
+          className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 mt-14 relative z-50"
         >
           <button
-            className="px-8 py-3 text-xl font-semibold text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-xl hover:from-pink-600 hover:to-rose-600 transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-2xl"
+            className="px-10 py-4 text-xl font-bold text-white bg-gradient-to-r from-pink-500 via-red-500 to-rose-500 rounded-xl hover:from-pink-600 hover:to-rose-600 transform hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-2xl"
             onClick={handleYesClick}
           >
             Yes, I will! 🥰
           </button>
           <button
-            className="px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl hover:from-gray-600 hover:to-gray-700 transform hover:scale-95 transition-all duration-300 shadow-lg"
+            className="px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-gray-500 to-gray-600 rounded-xl hover:from-gray-600 hover:to-gray-700 transform hover:scale-95 transition-all duration-300 shadow-lg"
             style={
               position
                 ? {
