@@ -226,7 +226,21 @@ export default function PhotoPairGame({
   }, [matched, handleShowProposal, bestTime, bestMoves, seconds, moves, gamesPlayed]);
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-4 p-2 sm:p-4 min-h-screen">
+    <div className="w-full flex flex-col items-center justify-center gap-2 sm:gap-4 p-2 sm:p-4 min-h-screen bg-gradient-to-b from-pink-50 to-red-50">
+      {/* Game Title */}
+      <motion.div
+        className="text-center mt-2 sm:mt-4"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <h1 className="text-lg sm:text-2xl md:text-3xl font-bold text-red-600 mb-1 sm:mb-2">
+          💕 Match the Photo Pairs 💕
+        </h1>
+        <p className="text-xs sm:text-sm md:text-base text-gray-700 font-medium">
+          Reveal the surprise by finding all the matching pairs!
+        </p>
+      </motion.div>
+
       {/* Confetti on victory */}
       {showConfetti && (
         <div className="fixed inset-0 z-50">
@@ -263,52 +277,51 @@ export default function PhotoPairGame({
       )}
 
       {/* Stats Display - Horizontal on desktop, Vertical on mobile */}
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 flex-wrap justify-center w-full max-w-4xl">
+      <div className="flex flex-col sm:flex-row gap-1 sm:gap-2 md:gap-4 flex-wrap justify-center w-full max-w-full px-2">
         <motion.div
-          className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-4 py-3 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all flex-shrink-0"
-          whileHover={{ scale: 1.05 }}
+          className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-2 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl font-bold shadow-lg hover:shadow-xl transition-all flex-shrink-0 text-center"
+          whileHover={{ scale: 1.03 }}
         >
-          <div className="text-sm">⏱️ Time</div>
-          <div className="text-2xl">{Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, "0")}</div>
+          <div className="text-xs sm:text-sm">⏱️ Time</div>
+          <div className="text-lg sm:text-2xl font-bold">{Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, "0")}</div>
         </motion.div>
 
         <motion.div
-          className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-4 py-3 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all flex-shrink-0"
-          whileHover={{ scale: 1.05 }}
+          className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-2 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl font-bold shadow-lg hover:shadow-xl transition-all flex-shrink-0 text-center"
+          whileHover={{ scale: 1.03 }}
         >
-          <div className="text-sm">💕 Moves</div>
-          <div className="text-2xl">{moves}</div>
+          <div className="text-xs sm:text-sm">💕 Moves</div>
+          <div className="text-lg sm:text-2xl font-bold">{moves}</div>
         </motion.div>
 
         {bestTime !== null && (
           <motion.div
-            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-3 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all flex-shrink-0"
-            whileHover={{ scale: 1.05 }}
+            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-2 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl font-bold shadow-lg hover:shadow-xl transition-all flex-shrink-0 text-center"
+            whileHover={{ scale: 1.03 }}
           >
-            <div className="text-sm">🏆 Best</div>
-            <div className="text-lg">{Math.floor(bestTime / 60)}:{String(bestTime % 60).padStart(2, "0")} • {bestMoves} moves</div>
+            <div className="text-xs sm:text-sm">🏆 Best</div>
+            <div className="text-xs sm:text-lg font-bold">{Math.floor(bestTime / 60)}:{String(bestTime % 60).padStart(2, "0")} • {bestMoves} moves</div>
           </motion.div>
         )}
 
         <motion.button
           onClick={handleRestart}
-          className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-3 rounded-xl font-bold shadow-xl hover:shadow-2xl transition-all hover:scale-105 active:scale-95 flex-shrink-0"
+          className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-2 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105 active:scale-95 flex-shrink-0"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <div className="text-sm">🔄</div>
-          <div className="text-lg">Restart</div>
+          <div className="text-sm sm:text-base">🔄 Restart</div>
         </motion.button>
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full max-w-4xl">
-        <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-semibold text-gray-700">Cards Matched: {matched.length / 2} / 18</span>
+      <div className="w-full max-w-full px-2 sm:px-0 sm:max-w-4xl">
+        <div className="flex justify-between items-center mb-2 gap-2">
+          <span className="text-xs sm:text-sm font-semibold text-gray-700">Cards: {matched.length / 2} / 18</span>
           <span className="text-xs text-gray-500">{Math.round((matched.length / imagePairs.length) * 100)}%</span>
         </div>
         <motion.div
-          className="w-full h-3 bg-gray-200 rounded-full overflow-hidden shadow-md"
+          className="w-full h-2 sm:h-3 bg-gray-200 rounded-full overflow-hidden shadow-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
@@ -335,12 +348,12 @@ export default function PhotoPairGame({
 
       {/* Game Grid Container */}
       <motion.div
-        className="flex-1 flex items-center justify-center w-full max-w-full"
+        className="flex-1 flex items-center justify-center w-full max-w-full overflow-x-hidden"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="grid grid-cols-9 gap-1 sm:gap-1.5 md:gap-2 lg:gap-3 p-2 sm:p-4 max-w-full overflow-hidden">
+        <div className="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 gap-1 sm:gap-2 md:gap-2 lg:gap-3 p-1 sm:p-2 md:p-4 max-w-full" style={{ width: 'fit-content' }}>
           {/* Image preload */}
           <div className="hidden">
             {shuffled.map((image, i) => (
@@ -359,10 +372,10 @@ export default function PhotoPairGame({
             index !== null ? (
               <motion.div
                 key={i}
-                className="relative cursor-pointer"
+                className="relative cursor-pointer flex-shrink-0"
                 style={{
-                  width: "clamp(2rem, 8vw, 5rem)",
-                  height: "clamp(2rem, 8vw, 5rem)",
+                  width: "clamp(1.5rem, 5.5vw, 4.5rem)",
+                  height: "clamp(1.5rem, 5.5vw, 4.5rem)",
                   perspective: "1000px",
                 }}
                 whileHover={{ scale: 1.08 }}
@@ -430,8 +443,8 @@ export default function PhotoPairGame({
               <div
                 key={i}
                 style={{
-                  width: "clamp(2rem, 8vw, 5rem)",
-                  height: "clamp(2rem, 8vw, 5rem)",
+                  width: "clamp(1.5rem, 5.5vw, 4.5rem)",
+                  height: "clamp(1.5rem, 5.5vw, 4.5rem)",
                 }}
               />
             ),

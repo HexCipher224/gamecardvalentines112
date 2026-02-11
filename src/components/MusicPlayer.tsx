@@ -10,6 +10,9 @@ export default function MusicPlayer() {
     const audio = audioRef.current;
     if (!audio) return;
 
+    // Set volume
+    audio.volume = 0.5;
+
     // Set state to playing
     setPlaying(true);
 
@@ -64,7 +67,6 @@ export default function MusicPlayer() {
         src="/mary-music.mp3" 
         loop 
         autoPlay 
-        volume={0.5}
       />
       <button
         onClick={toggle}
